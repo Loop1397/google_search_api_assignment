@@ -5,3 +5,29 @@
   font: inherit;
   color: inherit;
 }
+
+header {
+  width: 100%;
+  height: 50px;
+  top: 0;
+  position: fixed;
+  z-index: 5000;
+  box-shadow: 0px 5px 10px -2px rgb(214, 214, 214);
+  background-color: white;
+}
+
+#input-box {
+  width: 500px;
+  height: 35px;
+  border-radius: 20px;
+  border: solid 1px rgb(212, 212, 212);
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
