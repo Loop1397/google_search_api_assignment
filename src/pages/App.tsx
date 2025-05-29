@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import './App.css'
 import GoogleCustomSearchAPI from '../apis/GoogleCustomSearchAPI';
+import type { SearchResult } from '../types/Search.Result';
 
 function App() {
   const [text, setText] = useState<string>("");
   const [startIndex, setStartIndex] = useState<number>(1);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<SearchResult[]>([]);
 
   const customSearchAPI = new GoogleCustomSearchAPI(
     import.meta.env.VITE_CUSTOM_SEARCH_ENGINE_ID,
@@ -24,7 +25,7 @@ function App() {
       setResult(searchResults);
     } catch (error) {
       console.error(`Error: ${error}`);
-      setResult(null);
+      setResult([]);
     }
   }
 
@@ -56,6 +57,9 @@ function App() {
       <div id="content">
         <ul id='views'>
           <li className='view-wrap'>
+            {/* {result.map((view) => {
+
+            })} */}
             <div className="view-title">
               <img className='title-thumbnail' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDkWOjzL1pMnggqccpsEEBHjVvjWqc6Y5thpNSLUXDRIcQ9hjoUQJRebRQ&s" />
               <a className='title-text' href="https://x.com/NEKOMANYANKO/status/1921451051959325096">竹猫（ちゃろー！） on X: \"なんで忙しー日はライフ10なの ...</a>
