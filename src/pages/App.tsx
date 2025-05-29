@@ -29,8 +29,15 @@ function App() {
   }
 
   return (
-    <div id="content">
+    <div id="wrap">
       <header>
+        {/* whiteSpace: P태그가 눌려도 줄바꿈을 하지 않게 막아주는 옵션 */}
+        <p className='logo' style={{ color: '#3C80F2' }}>G</p>
+        <p className='logo' style={{ color: '#E9442E' }}>C</p>
+        <p className='logo' style={{ color: '#FABD04' }}>S</p>
+        <p className='logo' style={{ color: '#3C80F2' }}>A</p>
+        <p className='logo' style={{ color: '#34A853' }}>P</p>
+        <p className='logo' style={{ color: '#E9442E' }}>I</p>
         <div id="input-box">
           <input
             value={text}
@@ -42,24 +49,44 @@ function App() {
                 activeEnter();
               }
             }}
+            style={{ width: '560px', height: '30px', fontSize: '18px', border: 'none' }}
           />
         </div>
-
       </header>
-      <p>{ }</p>
-      <a href="https://x.com/NEKOMANYANKO/status/1921451051959325096">竹猫（ちゃろー！） on X: \"なんで忙しー日はライフ10なの ...</a>
-      <p>May 11, 2025 ... なんで忙しー日はライフ10なの〜 カレイドスコープは50じゃないの〜？</p>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDkWOjzL1pMnggqccpsEEBHjVvjWqc6Y5thpNSLUXDRIcQ9hjoUQJRebRQ&s" style={{ width: "200px", height: '200px' }} />
-      <a href="https://x.com/NEKOMANYANKO/status/1921451051959325096">竹猫（ちゃろー！） on X: \"なんで忙しー日はライフ10なの ...</a>
-      <p>May 11, 2025 ... なんで忙しー日はライフ10なの〜 カレイドスコープは50じゃないの〜？</p>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDkWOjzL1pMnggqccpsEEBHjVvjWqc6Y5thpNSLUXDRIcQ9hjoUQJRebRQ&s" style={{ width: "200px", height: '200px' }} />
-      <a href="https://x.com/NEKOMANYANKO/status/1921451051959325096">竹猫（ちゃろー！） on X: \"なんで忙しー日はライフ10なの ...</a>
-      <p>May 11, 2025 ... なんで忙しー日はライフ10なの〜 カレイドスコープは50じゃないの〜？</p>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDkWOjzL1pMnggqccpsEEBHjVvjWqc6Y5thpNSLUXDRIcQ9hjoUQJRebRQ&s" style={{ width: "200px", height: '200px' }} />
-      <a href="https://x.com/NEKOMANYANKO/status/1921451051959325096">竹猫（ちゃろー！） on X: \"なんで忙しー日はライフ10なの ...</a>
-      <p>May 11, 2025 ... なんで忙しー日はライフ10なの〜 カレイドスコープは50じゃないの〜？</p>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDkWOjzL1pMnggqccpsEEBHjVvjWqc6Y5thpNSLUXDRIcQ9hjoUQJRebRQ&s" style={{ width: "200px", height: '200px' }} />
-    </div>
+      <div id="content">
+        <ul id='views'>
+          <li className='view-wrap'>
+            <div className="view-title">
+              <img className='title-thumbnail' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDkWOjzL1pMnggqccpsEEBHjVvjWqc6Y5thpNSLUXDRIcQ9hjoUQJRebRQ&s" />
+              <a className='title-text' href="https://x.com/NEKOMANYANKO/status/1921451051959325096">竹猫（ちゃろー！） on X: \"なんで忙しー日はライフ10なの ...</a>
+            </div>
+            <p className='view-content'>May 11, 2025 ... なんで忙しー日はライフ10なの〜 カレイドスコープは50じゃないの〜？</p>
+          </li>
+          <li className='view-wrap'>
+            <div className="view-title">
+              <img className='title-thumbnail' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDkWOjzL1pMnggqccpsEEBHjVvjWqc6Y5thpNSLUXDRIcQ9hjoUQJRebRQ&s" />
+              <a className='title-text' href="https://x.com/NEKOMANYANKO/status/1921451051959325096">竹猫（ちゃろー！） on X: \"なんで忙しー日はライフ10なの ...</a>
+            </div>
+            <p className='view-content'>May 11, 2025 ... なんで忙しー日はライフ10なの〜 カレイドスコープは50じゃないの〜？</p>
+          </li>
+          <li className='view-wrap'>
+            <div className="view-title">
+              <img className='title-thumbnail' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDkWOjzL1pMnggqccpsEEBHjVvjWqc6Y5thpNSLUXDRIcQ9hjoUQJRebRQ&s" />
+              <a className='title-text' href="https://x.com/NEKOMANYANKO/status/1921451051959325096">竹猫（ちゃろー！） on X: \"なんで忙しー日はライフ10なの ...</a>
+            </div>
+            <p className='view-content'>May 11, 2025 ... なんで忙しー日はライフ10なの〜 カレイドスコープは50じゃないの〜？</p>
+          </li>
+          <li className='view-wrap'>
+            <div className="view-title">
+              <img className='title-thumbnail' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDkWOjzL1pMnggqccpsEEBHjVvjWqc6Y5thpNSLUXDRIcQ9hjoUQJRebRQ&s" />
+              <a className='title-text' href="https://x.com/NEKOMANYANKO/status/1921451051959325096">竹猫（ちゃろー！） on X: \"なんで忙しー日はライフ10なの ...</a>
+            </div>
+            <p className='view-content'>May 11, 2025 ... なんで忙しー日はライフ10なの〜 カレイドスコープは50じゃないの〜？</p>
+          </li>
+        </ul>
+      </div>
+
+    </div >
   )
 }
 
