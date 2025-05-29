@@ -21,7 +21,6 @@ function App() {
 
     try {
       const searchResults = await customSearchAPI.search(text, startIndex);
-      console.log(searchResults);
       setResult(searchResults);
     } catch (error) {
       console.error(`Error: ${error}`);
@@ -56,37 +55,15 @@ function App() {
       </header>
       <div id="content">
         <ul id='views'>
-          <li className='view-wrap'>
-            {/* {result.map((view) => {
-
-            })} */}
-            <div className="view-title">
-              <img className='title-thumbnail' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDkWOjzL1pMnggqccpsEEBHjVvjWqc6Y5thpNSLUXDRIcQ9hjoUQJRebRQ&s" />
-              <a className='title-text' href="https://x.com/NEKOMANYANKO/status/1921451051959325096">竹猫（ちゃろー！） on X: \"なんで忙しー日はライフ10なの ...</a>
-            </div>
-            <p className='view-content'>May 11, 2025 ... なんで忙しー日はライフ10なの〜 カレイドスコープは50じゃないの〜？</p>
-          </li>
-          <li className='view-wrap'>
-            <div className="view-title">
-              <img className='title-thumbnail' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDkWOjzL1pMnggqccpsEEBHjVvjWqc6Y5thpNSLUXDRIcQ9hjoUQJRebRQ&s" />
-              <a className='title-text' href="https://x.com/NEKOMANYANKO/status/1921451051959325096">竹猫（ちゃろー！） on X: \"なんで忙しー日はライフ10なの ...</a>
-            </div>
-            <p className='view-content'>May 11, 2025 ... なんで忙しー日はライフ10なの〜 カレイドスコープは50じゃないの〜？</p>
-          </li>
-          <li className='view-wrap'>
-            <div className="view-title">
-              <img className='title-thumbnail' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDkWOjzL1pMnggqccpsEEBHjVvjWqc6Y5thpNSLUXDRIcQ9hjoUQJRebRQ&s" />
-              <a className='title-text' href="https://x.com/NEKOMANYANKO/status/1921451051959325096">竹猫（ちゃろー！） on X: \"なんで忙しー日はライフ10なの ...</a>
-            </div>
-            <p className='view-content'>May 11, 2025 ... なんで忙しー日はライフ10なの〜 カレイドスコープは50じゃないの〜？</p>
-          </li>
-          <li className='view-wrap'>
-            <div className="view-title">
-              <img className='title-thumbnail' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDkWOjzL1pMnggqccpsEEBHjVvjWqc6Y5thpNSLUXDRIcQ9hjoUQJRebRQ&s" />
-              <a className='title-text' href="https://x.com/NEKOMANYANKO/status/1921451051959325096">竹猫（ちゃろー！） on X: \"なんで忙しー日はライフ10なの ...</a>
-            </div>
-            <p className='view-content'>May 11, 2025 ... なんで忙しー日はライフ10なの〜 カレイドスコープは50じゃないの〜？</p>
-          </li>
+          {result.map((view: SearchResult) => (
+            <li key={view.title} className='view-wrap'>
+              <div className="view-title">
+                <img className='title-thumbnail' src={view.pagemap.cse_thumbnail?.[0]?.src} />
+                <a className='title-text' href={view.link}>{view.title}</a>
+              </div>
+              <p className='view-content'>{view.snippet}</p>
+            </li>
+          ))}
         </ul>
       </div>
 
