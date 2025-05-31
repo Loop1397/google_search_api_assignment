@@ -13,12 +13,7 @@ function App() {
     import.meta.env.VITE_API_KEY
   );
 
-  const activeEnter = async () => {
-    // テキストが空だったら反応しないようにする
-    if (text === "") {
-      return null;
-    }
-
+  const searchByApi = async () => {
     try {
       const searchResults = await customSearchAPI.search(text, startIndex);
       setResult(searchResults);
@@ -27,6 +22,24 @@ function App() {
       setResult([]);
     }
   }
+
+  const handleEnterKeyPress = async (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      await searchByApi();
+    }
+  };
+
+  const handlePreviousClick = async () => {
+    if (startIndex >= 11) {
+      await setStartIndex(startIndex - 10);
+      searchByApi();
+    }
+  };
+
+  const handleNextClick = async () => {
+    await setStartIndex(startIndex + 10);
+    searchByApi();
+  };
 
   return (
     <div id="wrap">
@@ -44,11 +57,7 @@ function App() {
             onChange={event => {
               setText(event.target.value);
             }}
-            onKeyDown={event => {
-              if (event.key === 'Enter') {
-                activeEnter();
-              }
-            }}
+            onKeyDown={handleEnterKeyPress}
             style={{ width: '560px', height: '30px', fontSize: '18px', border: 'none' }}
           />
         </div>
@@ -65,6 +74,10 @@ function App() {
             </li>
           ))}
         </ul>
+      </div>
+      <div style={{ marginTop: '20px' }}>
+        <button onClick={handlePreviousClick}>이전</button>
+        <button onClick={handleNextClick}>다음</button>
       </div>
 
     </div >
