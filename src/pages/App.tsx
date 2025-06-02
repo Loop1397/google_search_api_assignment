@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import GoogleCustomSearchAPI from '../apis/GoogleCustomSearchAPI';
 import type { SearchResult } from '../types/Search.Result';
+import { start } from 'repl';
 
 function App() {
   const [text, setText] = useState<string>("");
@@ -13,8 +14,14 @@ function App() {
     import.meta.env.VITE_API_KEY
   );
 
+  useEffect(() => {
+    searchByApi();
+    // console.log(`숫자 변경! ${text}, ${startIndex}`)
+  }, [startIndex])
+
   const searchByApi = async () => {
     try {
+      console.log(text, startIndex);
       const searchResults = await customSearchAPI.search(text, startIndex);
       setResult(searchResults);
     } catch (error) {
@@ -26,19 +33,18 @@ function App() {
   const handleEnterKeyPress = async (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       await searchByApi();
+      // console.log(`검색! ${text}, ${startIndex}`)
     }
   };
 
   const handlePreviousClick = async () => {
     if (startIndex >= 11) {
-      await setStartIndex(startIndex - 10);
-      searchByApi();
+      setStartIndex(startIndex - 10);
     }
   };
 
   const handleNextClick = async () => {
-    await setStartIndex(startIndex + 10);
-    searchByApi();
+    setStartIndex(startIndex + 10);
   };
 
   return (
