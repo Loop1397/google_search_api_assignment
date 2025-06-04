@@ -91,19 +91,25 @@ function App() {
                         </li>
                     ))}
                 </ul>
+                {result.length !== 0 ? (
+                    startIndex === 1 ? (
+                        <div style={{ marginTop: "20px" }}>
+                            <button id="next-button" onClick={handleNextClick}>
+                                Next
+                            </button>
+                        </div>
+                    ) : (
+                        <div style={{ marginTop: "20px" }}>
+                            <button id="prev-button" onClick={handlePreviousClick}>
+                                Prev
+                            </button>
+                            <button id="next-button" onClick={handleNextClick} style={{ marginLeft: "10px" }}>
+                                Next
+                            </button>
+                        </div>
+                    )
+                ) : null}
             </div>
-            {result.length !== 0 ? (
-                startIndex === 1 ? (
-                    <div style={{ marginTop: "20px" }}>
-                        <button onClick={handleNextClick}>Next</button>
-                    </div>
-                ) : (
-                    <div style={{ marginTop: "20px" }}>
-                        <button onClick={handlePreviousClick}>Prev</button>
-                        <button onClick={handleNextClick}>Next</button>
-                    </div>
-                )
-            ) : null}
         </div>
     );
 }
