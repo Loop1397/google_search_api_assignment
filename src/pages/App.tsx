@@ -12,7 +12,6 @@ function App() {
 
   useEffect(() => {
     searchByApi();
-    // console.log(`숫자 변경! ${text}, ${startIndex}`)
     scrollTop();
   }, [startIndex]);
 
@@ -21,6 +20,7 @@ function App() {
       console.log(text, startIndex);
       const searchResults = await customSearchAPI.search(text, startIndex);
       setResult(searchResults);
+      console.log(searchResults);
     } catch (error) {
       console.error(`Error: ${error}`);
       setResult([]);
@@ -30,7 +30,6 @@ function App() {
   const handleEnterKeyPress = async (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       await searchByApi();
-      // console.log(`검색! ${text}, ${startIndex}`)
     }
   };
 
@@ -88,7 +87,7 @@ function App() {
           {result.map((view: SearchResult) => (
             <li key={view.title} className="view-wrap">
               <div className="view-title">
-                <img className="title-thumbnail" src={view.pagemap.cse_thumbnail?.[0]?.src} />
+                {view.pagemap ? <img className="title-thumbnail" src={view.pagemap.cse_thumbnail?.[0]?.src} /> : <img className="title-thumbnail" />}
                 <a className="title-text" href={view.link}>
                   {view.title}
                 </a>
